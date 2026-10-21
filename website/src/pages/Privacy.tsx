@@ -1,4 +1,5 @@
 import { Footer } from '../components/Footer';
+import { GardenBackdrop } from '../components/GardenBackdrop';
 import { Nav } from '../components/Nav';
 import { APP_NAME, contactEmail } from '../config';
 
@@ -16,6 +17,7 @@ function H2({ children }: { children: React.ReactNode }) {
 export function PrivacyPage() {
   return (
     <>
+      <GardenBackdrop />
       <Nav />
       <main id="main" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Legal</p>
@@ -37,7 +39,11 @@ export function PrivacyPage() {
               use it on other phones. It’s on by default for Google accounts and you can <strong>turn it off</strong> or
               <strong> delete the cloud copy</strong> at any time.
             </li>
-            <li>Local accounts (created without Google) never upload anything.</li>
+            <li>Local accounts (created without Google) never upload your financial records.</li>
+            <li>
+              <strong>Smart category suggestions</strong> send only the description you type to suggest a category. It’s
+              on by default and you can <strong>turn it off</strong> in Account.
+            </li>
             <li>We do not collect analytics, show ads, or sell or share personal information.</li>
           </ul>
 
@@ -83,6 +89,13 @@ export function PrivacyPage() {
               records; to also remove your sign-in record, contact us (below).
             </li>
           </ul>
+
+          <H2>Smart category suggestions</H2>
+          <p>
+            When Smart category suggestions is on (it is on by default), the app sends only the description you type —
+            never the amount, date, account, or your identity — to our server to suggest a category. The description is
+            not stored. You can turn it off under Account → Smart category suggestions.
+          </p>
 
           <H2>Google sign-in</H2>
           <p>
