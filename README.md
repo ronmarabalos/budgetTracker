@@ -80,14 +80,20 @@ Whether you're tracking daily expenses on the go with the native mobile app or a
 
 ## 🏗 Architecture & Workspace Structure
 
-The repository is structured as a dual-client workspace containing both the Vite web client and the Expo React Native mobile client:
+> 📖 **Full Engineering Master Document:** For complete end-to-end system topology, technology matrix, database ERD, offline sync protocol, and cryptographic specifications, read [**`docs/SYSTEM_ARCHITECTURE_AND_TECH_STACK.md`**](docs/SYSTEM_ARCHITECTURE_AND_TECH_STACK.md).
+
+The repository is structured as a multi-client monorepo containing the Vite web client, the Expo React Native mobile client, and the landing/distribution portal:
 
 ```text
 budgettracker/
+├── docs/                      # 📚 MASTER DOCUMENTATION
+│   ├── SYSTEM_ARCHITECTURE_AND_TECH_STACK.md # Master Architecture & Tech Stack
+│   └── README.md              # Engineering documentation index
+│
 ├── index.html                 # Web app entry HTML
 ├── src/                       # 🌐 WEB APPLICATION (React 19 + Vite)
 │   ├── components/            # UI components & views
-│   │   ├── modals/            # Transaction, Goal, Account & Settings Modals
+│   │   ├── modals/            # Transaction, Goal, Account, AI Insights Modals
 │   │   ├── screens/           # HomeScreen, TransactionsScreen, GoalsScreen, AccountScreen
 │   │   ├── BottomNav.tsx      # Mobile-style navigation bar
 │   │   └── Header.tsx         # Top app bar with balances & actions
@@ -105,12 +111,17 @@ budgettracker/
 │   │   │   └── account/       # Profile, budget limits & help routes
 │   │   ├── features/          # Domain-driven screens & logic (home, transactions, goals, account)
 │   │   ├── components/        # Design system UI primitives & layout chrome
-│   │   ├── store/             # Zustand state stores (persisted to AsyncStorage)
+│   │   ├── store/             # Zustand state stores (persisted to AsyncStorage & SQLite)
 │   │   ├── theme/             # Light & Dark color tokens & NativeWind config
 │   │   └── lib/               # Utility functions (CSV builder, formatting, dates)
 │   ├── docs/
-│   │   └── ARCHITECTURE.md    # In-depth mobile architecture & guidelines
+│   │   ├── ARCHITECTURE.md    # In-depth mobile architecture & guidelines
+│   │   └── BRAND.md           # Brand identity and visual design rules
 │   └── app.json               # Expo configuration & plugins
+│
+├── website/                   # 🚀 LANDING & DISTRIBUTION PORTAL (Vite + SSG)
+│   ├── src/                   # Marketing UI, store buttons & QR handoff
+│   └── scripts/prerender.mjs  # Static site generator for SEO & crawlers
 │
 ├── package.json               # Root Web workspace configuration
 └── README.md                  # Project documentation
