@@ -1,4 +1,5 @@
 import { Footer } from '../components/Footer';
+import { GardenBackdrop } from '../components/GardenBackdrop';
 import { Nav } from '../components/Nav';
 import { APP_NAME, GOVERNING_LAW, contactEmail } from '../config';
 
@@ -20,6 +21,7 @@ function H2({ id, children }: { id?: string; children: React.ReactNode }) {
 export function TermsPage() {
   return (
     <>
+      <GardenBackdrop />
       <Nav />
       <main id="main" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Legal</p>

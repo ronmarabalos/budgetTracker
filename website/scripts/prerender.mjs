@@ -15,7 +15,9 @@ const PAGES = [
 ];
 const MARKER = '<div id="root"></div>';
 
-const vite = await createServer({ root, server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
+// `mode: 'production'` loads the same .env.production values as `vite build`, so the
+// pre-rendered HTML matches the client bundle (download links, version) and hydrates cleanly.
+const vite = await createServer({ root, mode: 'production', server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
 try {
   for (const page of PAGES) {
     const mod = await vite.ssrLoadModule(page.module);

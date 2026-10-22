@@ -14,7 +14,8 @@ import {
 } from './icons';
 import type { Platform } from '../config';
 import { HomeScreenMock, Phone, ReportsScreenMock, UnlockScreenMock } from './PhoneMockup';
-import { ApkLink, StoreButtons } from './StoreButtons';
+import { DownloadCount } from './DownloadCount';
+import { ApkButton, StoreButtons } from './StoreButtons';
 
 function SectionHeading({ eyebrow, title, intro, id }: { eyebrow: string; title: string; intro?: string; id?: string }) {
   return (
@@ -47,8 +48,13 @@ export function Hero({ platform }: { platform: Platform }) {
             Sign in with Google to back up and sync across your phones — or use a local account that never leaves your
             device.
           </p>
-          <StoreButtons platform={platform} className="mt-8" />
-          <ApkLink className="mt-4" />
+          <div className="mt-8 flex flex-col items-start gap-3">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <ApkButton />
+              <DownloadCount />
+            </div>
+            <StoreButtons platform={platform} />
+          </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-on-surface-variant">
             {['Works in airplane mode', 'Syncs across your phones', 'PIN & biometric lock'].map((t) => (
               <li key={t} className="flex items-center gap-1.5">
@@ -62,7 +68,7 @@ export function Hero({ platform }: { platform: Platform }) {
           <Phone label="Spendify dashboard showing total balance, monthly income and spending, a category breakdown and recent transactions" className="rotate-2">
             <HomeScreenMock />
           </Phone>
-          <div className="absolute -left-4 bottom-16 hidden items-center gap-2 rounded-2xl border border-surface-container-highest bg-surface-container px-4 py-3 shadow-card sm:flex" aria-hidden="true">
+          <div className="glass-card absolute -left-4 -bottom-2 hidden items-center gap-2 rounded-2xl px-4 py-3 sm:flex" aria-hidden="true">
             <Airplane className="h-5 w-5 text-primary" />
             <span className="text-sm font-semibold">Airplane mode? Still works.</span>
           </div>
@@ -111,7 +117,7 @@ export function Privacy() {
     'Include ads or analytics trackers in the app',
   ];
   return (
-    <section id="privacy" aria-labelledby="privacy-title" className="border-y border-surface-container-high bg-surface-container-low py-24">
+    <section id="privacy" aria-labelledby="privacy-title" className="py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">Privacy</p>
@@ -126,7 +132,7 @@ export function Privacy() {
           <ul className="mt-8 space-y-4">
             {stays.map(({ icon: Icon, text }) => (
               <li key={text} className="flex gap-3">
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary-container/15 text-primary">
+                <span className="glass-raised mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-primary">
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="text-[15px] leading-relaxed">{text}</span>
@@ -134,7 +140,7 @@ export function Privacy() {
             ))}
           </ul>
         </div>
-        <div className="rounded-3xl border border-surface-container-high bg-surface-container p-8 shadow-card">
+        <div className="glass-card rounded-3xl p-8">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary-container/15 text-secondary">
               <ServerOff className="h-5 w-5" aria-hidden="true" />
@@ -172,8 +178,8 @@ export function HowItWorks() {
         <SectionHeading id="how-title" eyebrow="How it works" title="Up and running in a minute" />
         <ol className="mt-16 grid gap-6 md:grid-cols-3">
           {steps.map(({ icon: Icon, title, body }, i) => (
-            <li key={title} className="relative rounded-3xl border border-surface-container-high bg-surface-container p-7 shadow-card">
-              <span className="absolute right-6 top-5 text-5xl font-extrabold text-surface-container-highest" aria-hidden="true">
+            <li key={title} className="glass-card relative rounded-3xl p-7">
+              <span className="absolute right-6 top-5 text-5xl font-extrabold text-primary/15" aria-hidden="true">
                 {i + 1}
               </span>
               <Icon className="h-7 w-7 text-primary" aria-hidden="true" />
@@ -205,12 +211,12 @@ const FAQS = [
 
 export function Faq() {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="border-t border-surface-container-high bg-surface-container-low py-24">
+    <section id="faq" aria-labelledby="faq-title" className="py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeading id="faq-title" eyebrow="FAQ" title="Questions, answered" />
         <div className="mt-12 space-y-3">
           {FAQS.map((f) => (
-            <details key={f.q} className="group rounded-2xl border border-surface-container-high bg-surface-container px-6 py-1 shadow-card">
+            <details key={f.q} className="glass-card group rounded-2xl px-6 py-1">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-base font-semibold [&::-webkit-details-marker]:hidden">
                 {f.q}
                 <ChevronDown className="h-5 w-5 shrink-0 text-on-surface-variant transition group-open:rotate-180" aria-hidden="true" />

@@ -1,12 +1,18 @@
 import AirplaneModeIcon from '@hugeicons/core-free-icons/AirplaneModeIcon';
+import AndroidIcon from '@hugeicons/core-free-icons/AndroidIcon';
 import AppleIcon from '@hugeicons/core-free-icons/AppleIcon';
+import ArrowDownLeft01Icon from '@hugeicons/core-free-icons/ArrowDownLeft01Icon';
+import ArrowLeft02Icon from '@hugeicons/core-free-icons/ArrowLeft02Icon';
+import ArrowRight01Icon from '@hugeicons/core-free-icons/ArrowRight01Icon';
+import ArrowUp02Icon from '@hugeicons/core-free-icons/ArrowUp02Icon';
+import ArrowUpRight01Icon from '@hugeicons/core-free-icons/ArrowUpRight01Icon';
 import ArrowDown01Icon from '@hugeicons/core-free-icons/ArrowDown01Icon';
 import Cancel01Icon from '@hugeicons/core-free-icons/Cancel01Icon';
 import CloudIcon from '@hugeicons/core-free-icons/CloudIcon';
 import Csv01Icon from '@hugeicons/core-free-icons/Csv01Icon';
 import CloudOffIcon from '@hugeicons/core-free-icons/CloudOffIcon';
 import ComputerIcon from '@hugeicons/core-free-icons/ComputerIcon';
-import DashboardSquare01Icon from '@hugeicons/core-free-icons/DashboardSquare01Icon';
+import Home01Icon from '@hugeicons/core-free-icons/Home01Icon';
 import DatabaseBackupIcon from '@hugeicons/core-free-icons/DatabaseBackupIcon';
 import Share08Icon from '@hugeicons/core-free-icons/Share08Icon';
 import Download04Icon from '@hugeicons/core-free-icons/Download04Icon';
@@ -58,6 +64,7 @@ const KeypadBackspaceIcon: IconSvgElement = [
 // Brand & store
 export const Leaf = make(Leaf01Icon, 'Leaf');
 export const AppleLogo = make(AppleIcon, 'AppleLogo');
+export const AndroidLogo = make(AndroidIcon, 'AndroidLogo');
 export const PlayStoreLogo = make(PlayStoreIcon, 'PlayStoreLogo');
 
 // Navigation & UI
@@ -95,7 +102,12 @@ export const Airplane = make(AirplaneModeIcon, 'Airplane');
 export const User = make(UserIcon, 'User');
 
 // App tab bar & keypad (mirrors the mobile app)
-export const TabHome = make(DashboardSquare01Icon, 'TabHome');
+export const TabHome = make(Home01Icon, 'TabHome');
+export const ArrowIncome = make(ArrowDownLeft01Icon, 'ArrowIncome');
+export const ArrowExpense = make(ArrowUpRight01Icon, 'ArrowExpense');
+export const ArrowUp = make(ArrowUp02Icon, 'ArrowUp');
+export const ArrowBack = make(ArrowLeft02Icon, 'ArrowBack');
+export const ChevronRight = make(ArrowRight01Icon, 'ChevronRight');
 export const TabTransactions = make(Invoice03Icon, 'TabTransactions');
 export const TabGoals = make(Target01Icon, 'TabGoals');
 export const Backspace = make(KeypadBackspaceIcon, 'Backspace');

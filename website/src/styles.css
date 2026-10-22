@@ -27,6 +27,23 @@
   --brand-ink: #1b4d34;
   --bt-shadow-card: 0 12px 32px -12px rgb(27 77 52 / 0.16);
   --bt-shadow-phone: 0 40px 80px -30px rgb(27 77 52 / 0.42);
+  /* Frosted glass over a blurred garden — mirrors glassByScheme in mobile/src/theme/ThemeProvider.tsx. */
+  --glass-fill: rgb(255 255 255 / 0.55);
+  --glass-fill-strong: rgb(255 255 255 / 0.72);
+  --glass-edge: rgb(255 255 255 / 0.8);
+  --glass-shadow: 0 10px 30px -8px rgb(34 72 40 / 0.18);
+  --glass-accent-badge: rgb(167 208 140 / 0.5);
+  --glass-accent: #1b4d34;
+  --tint-income: linear-gradient(135deg, rgb(226 242 214 / 0.92), rgb(255 255 255 / 0.45));
+  --tint-expense: linear-gradient(135deg, rgb(255 228 214 / 0.92), rgb(255 247 241 / 0.5));
+  --garden-top: #e3ecd8;
+  --garden-middle: #f1f2e7;
+  --garden-bottom: #d8e5cb;
+  --garden-glow: rgb(255 255 255 / 0.95);
+  --garden-glow-soft: rgb(255 255 255 / 0.6);
+  --garden-foliage: rgb(125 184 85 / 0.4);
+  --garden-foliage-deep: rgb(63 143 58 / 0.35);
+  --garden-leaf: rgb(93 165 68 / 0.32);
   color-scheme: light;
 }
 
@@ -51,6 +68,22 @@
     --brand-ink: #f7f6ee;
     --bt-shadow-card: 0 20px 40px -16px rgb(0 0 0 / 0.6);
     --bt-shadow-phone: 0 40px 90px -30px rgb(0 0 0 / 0.9);
+    --glass-fill: rgb(20 40 29 / 0.55);
+    --glass-fill-strong: rgb(28 51 38 / 0.7);
+    --glass-edge: rgb(241 239 228 / 0.1);
+    --glass-shadow: 0 14px 34px -10px rgb(0 0 0 / 0.6);
+    --glass-accent-badge: rgb(167 208 140 / 0.15);
+    --glass-accent: #a7d08c;
+    --tint-income: linear-gradient(135deg, rgb(46 125 50 / 0.38), rgb(20 40 29 / 0.5));
+    --tint-expense: linear-gradient(135deg, rgb(200 80 30 / 0.32), rgb(20 40 29 / 0.5));
+    --garden-top: #10281b;
+    --garden-middle: #0b1a12;
+    --garden-bottom: #0f2519;
+    --garden-glow: rgb(197 225 165 / 0.13);
+    --garden-glow-soft: rgb(197 225 165 / 0.08);
+    --garden-foliage: rgb(63 143 58 / 0.36);
+    --garden-foliage-deep: rgb(27 77 52 / 0.32);
+    --garden-leaf: rgb(63 143 58 / 0.3);
     color-scheme: dark;
   }
 }
@@ -75,6 +108,22 @@
   --brand-ink: #f7f6ee;
   --bt-shadow-card: 0 20px 40px -16px rgb(0 0 0 / 0.6);
   --bt-shadow-phone: 0 40px 90px -30px rgb(0 0 0 / 0.9);
+  --glass-fill: rgb(20 40 29 / 0.55);
+  --glass-fill-strong: rgb(28 51 38 / 0.7);
+  --glass-edge: rgb(241 239 228 / 0.1);
+  --glass-shadow: 0 14px 34px -10px rgb(0 0 0 / 0.6);
+  --glass-accent-badge: rgb(167 208 140 / 0.15);
+  --glass-accent: #a7d08c;
+  --tint-income: linear-gradient(135deg, rgb(46 125 50 / 0.38), rgb(20 40 29 / 0.5));
+  --tint-expense: linear-gradient(135deg, rgb(200 80 30 / 0.32), rgb(20 40 29 / 0.5));
+  --garden-top: #10281b;
+  --garden-middle: #0b1a12;
+  --garden-bottom: #0f2519;
+  --garden-glow: rgb(197 225 165 / 0.13);
+  --garden-glow-soft: rgb(197 225 165 / 0.08);
+  --garden-foliage: rgb(63 143 58 / 0.36);
+  --garden-foliage-deep: rgb(27 77 52 / 0.32);
+  --garden-leaf: rgb(63 143 58 / 0.3);
   color-scheme: dark;
 }
 
@@ -150,10 +199,58 @@
   }
 }
 
+/*
+ * Blurred-garden backdrop, same recipe as the app's GlassBackdrop: a soft wash
+ * with out-of-focus light and foliage. Used behind the page and inside the phone mockups.
+ */
+.garden {
+  background:
+    radial-gradient(circle at 18% 12%, var(--garden-glow) 0, transparent 38%),
+    radial-gradient(circle at 58% 62%, var(--garden-glow-soft) 0, transparent 40%),
+    radial-gradient(circle at 85% 8%, var(--garden-glow-soft) 0, transparent 12%),
+    radial-gradient(circle at 102% 32%, var(--garden-foliage) 0, transparent 30%),
+    radial-gradient(circle at -4% 44%, var(--garden-foliage) 0, transparent 22%),
+    radial-gradient(circle at 0% 98%, var(--garden-foliage-deep) 0, transparent 40%),
+    radial-gradient(circle at 100% 100%, var(--garden-foliage) 0, transparent 30%),
+    linear-gradient(180deg, var(--garden-top), var(--garden-middle) 50%, var(--garden-bottom));
+}
+.garden-leaf {
+  fill: var(--garden-leaf);
+}
+.garden-leaf-blur {
+  filter: blur(10px);
+}
+
+/* Frosted-glass card: translucent fill, hairline light edge, soft lift, real blur. */
+.glass-card {
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+}
+/* Denser glass for small floating controls (pills, icon buttons). */
+.glass-raised {
+  background: var(--glass-fill-strong);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+}
+.tint-income {
+  background: var(--tint-income);
+}
+.tint-expense {
+  background: var(--tint-expense);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-card {
+    background: var(--glass-fill-strong);
+  }
+}
+
 /* Floating glass nav: translucent surface + blur, firmer once the page scrolls under it. */
 .glass-nav {
-  --glass-border: color-mix(in srgb, var(--on-surface) 10%, transparent);
-  background: color-mix(in srgb, var(--surface-container) 60%, transparent);
+  --glass-border: var(--glass-edge);
+  background: var(--glass-fill);
   border: 1px solid var(--glass-border);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent),
@@ -162,18 +259,16 @@
   -webkit-backdrop-filter: blur(18px) saturate(1.6);
 }
 .glass-nav.is-raised {
-  background: color-mix(in srgb, var(--surface-container) 82%, transparent);
+  background: var(--glass-fill-strong);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent),
     0 18px 40px -18px rgb(27 77 52 / 0.35);
 }
 :root[data-theme='dark'] .glass-nav {
-  --glass-border: color-mix(in srgb, var(--on-surface) 12%, transparent);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 18px 40px -18px rgb(0 0 0 / 0.8);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .glass-nav {
-    --glass-border: color-mix(in srgb, var(--on-surface) 12%, transparent);
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 18px 40px -18px rgb(0 0 0 / 0.8);
   }
 }
@@ -190,11 +285,10 @@
   background:
     radial-gradient(60% 50% at 85% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 70%),
     radial-gradient(50% 40% at 0% 100%, color-mix(in srgb, var(--tertiary) 8%, transparent), transparent 70%),
-    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--on-surface) 9%, transparent) 1px, transparent 0) 0 0 / 22px 22px,
-    var(--surface-container-low);
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--on-surface) 7%, transparent) 1px, transparent 0) 0 0 / 22px 22px;
 }
 .bento-tile {
-  box-shadow: var(--bt-shadow-card);
+  box-shadow: var(--glass-shadow);
 }
 .bento-tile:hover {
   box-shadow: var(--bt-shadow-phone);

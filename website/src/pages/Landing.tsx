@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { DownloadSection } from '../components/DownloadSection';
 import { Footer } from '../components/Footer';
+import { GardenBackdrop } from '../components/GardenBackdrop';
 import { Nav } from '../components/Nav';
 import { Features } from '../components/Features';
 import { Faq, Hero, HowItWorks, Privacy, Showcase } from '../components/Sections';
@@ -16,6 +17,7 @@ export function LandingPage() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-surface-container focus:px-4 focus:py-2">
         Skip to content
       </a>
+      <GardenBackdrop />
       <Nav />
       <main id="main">
         <Hero platform={platform} />

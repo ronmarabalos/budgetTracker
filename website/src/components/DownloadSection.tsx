@@ -5,7 +5,8 @@ import { QrCode, Smartphone } from './icons';
 import { downloads, type Platform } from '../config';
 import { BRAND_SLOGAN } from '../config';
 import { SpendifyMark } from './Brand';
-import { ApkLink, AppStoreBadge, PlayStoreBadge } from './StoreButtons';
+import { DownloadCount } from './DownloadCount';
+import { ApkButton, AppStoreBadge, PlayStoreBadge } from './StoreButtons';
 
 /** QR code pointing back at this page, so desktop visitors can continue on their phone. */
 function PageQrCode() {
@@ -18,7 +19,7 @@ function PageQrCode() {
   }, []);
   if (!svg) return null;
   return (
-    <div className="flex flex-col items-center gap-3 rounded-3xl border border-surface-container-high bg-surface-container p-6 shadow-card">
+    <div className="glass-card flex flex-col items-center gap-3 rounded-3xl p-6">
       <p className="flex items-center gap-2 text-sm font-semibold">
         <QrCode className="h-4 w-4 text-primary" aria-hidden="true" />
         On a computer? Scan to open on your phone
@@ -32,7 +33,7 @@ function PageQrCode() {
 function PlatformCard({ title, highlighted, children }: { title: string; highlighted: boolean; children: React.ReactNode }) {
   return (
     <div
-      className={`flex flex-col rounded-3xl border bg-surface-container p-7 shadow-card ${highlighted ? 'border-primary ring-2 ring-primary/30' : 'border-surface-container-high'}`}>
+      className={`glass-card flex flex-col rounded-3xl p-7 ${highlighted ? 'ring-2 ring-primary/40' : ''}`}>
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-bold">{title}</h3>
         {highlighted && (
@@ -75,13 +76,14 @@ export function DownloadSection({ platform }: { platform: Platform }) {
       <p className="mt-2 text-[15px] text-on-surface-variant">
         {android.playStore ? 'Install from Google Play.' : android.apk ? 'Download and install the APK directly.' : 'The Google Play release is on its way.'}
       </p>
-      <div className="mt-6">
-        <PlayStoreBadge />
+      <div className="mt-6 flex flex-wrap gap-3">
+        <ApkButton />
+        {(android.playStore || !android.apk) && <PlayStoreBadge />}
       </div>
+      <DownloadCount className="mt-3" />
       {android.apk && (
-        <div className="mt-5 rounded-2xl bg-surface-container-low p-4 text-sm">
-          <ApkLink />
-          <p className="mt-2 text-on-surface-variant">
+        <div className="glass-raised mt-5 rounded-2xl p-4 text-sm">
+          <p className="text-on-surface-variant">
             Installing outside Google Play? Android will ask you to allow installs from your browser the first time.
           </p>
           {android.apkSha256 && (
@@ -100,8 +102,7 @@ export function DownloadSection({ platform }: { platform: Platform }) {
 
   return (
     <section id="download" aria-labelledby="download-title" className="relative overflow-hidden py-24">
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-primary-container/10 to-transparent" aria-hidden="true" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <SpendifyMark className="mx-auto h-20" />
           <h2 id="download-title" className="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl">

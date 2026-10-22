@@ -17,6 +17,8 @@ export const downloads = {
     playStore: env(import.meta.env.VITE_ANDROID_PLAY_STORE_URL),
     apk: env(import.meta.env.VITE_ANDROID_APK_URL),
     apkSha256: env(import.meta.env.VITE_ANDROID_APK_SHA256),
+    /** Download size label, e.g. “134 MB”. */
+    apkSize: env(import.meta.env.VITE_ANDROID_APK_SIZE),
   },
   version: env(import.meta.env.VITE_APP_VERSION),
 } as const;

@@ -1,5 +1,5 @@
 import { downloads, type Platform } from '../config';
-import { AppleLogo, Download, PlayStoreLogo } from './icons';
+import { AndroidLogo, AppleLogo, Download, PlayStoreLogo } from './icons';
 
 type BadgeProps = {
   href: string | null;
@@ -26,7 +26,7 @@ function StoreBadge({ href, logo, overline, title, pendingLabel }: BadgeProps) {
   if (!href) {
     return (
       <span
-        className={`${base} cursor-default border-outline/30 bg-surface-container-high text-on-surface-variant`}
+        className={`${base} glass-raised cursor-default text-on-surface-variant`}
         aria-label={`${title} — ${pendingLabel.toLowerCase()}`}>
         {content}
       </span>
@@ -57,16 +57,21 @@ export function PlayStoreBadge() {
   );
 }
 
-/** Secondary link for installing the Android APK directly (outside Google Play). */
-export function ApkLink({ className = '' }: { className?: string }) {
-  const { apk } = downloads.android;
+/** Primary button for installing the Android APK directly (outside Google Play), with version and size. */
+export function ApkButton({ className = '' }: { className?: string }) {
+  const { apk, apkSize } = downloads.android;
   if (!apk) return null;
+  const details = [downloads.version && `Version ${downloads.version}`, apkSize, 'APK'].filter(Boolean).join(' · ');
   return (
     <a
       href={apk}
-      className={`inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline-offset-4 hover:underline ${className}`}>
-      <Download className="h-4 w-4" />
-      Download the Android APK{downloads.version ? ` (v${downloads.version})` : ''}
+      className={`group inline-flex h-14 items-center gap-3 rounded-xl bg-primary-container px-5 text-on-primary-container shadow-card transition hover:-translate-y-0.5 hover:brightness-110 ${className}`}>
+      <AndroidLogo className="h-6 w-6" />
+      <span className="flex flex-col text-left leading-tight">
+        <span className="text-[16px] font-bold tracking-tight">Download for Android</span>
+        <span className="text-[11px] opacity-80">{details}</span>
+      </span>
+      <Download className="ml-1 h-5 w-5 transition group-hover:translate-y-0.5" />
     </a>
   );
 }

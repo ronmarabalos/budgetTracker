@@ -40,7 +40,7 @@ function Tile({ icon: Icon, title, body, visual, className = '', brand }: TilePr
       className={`bento-tile group relative flex flex-col overflow-hidden rounded-[28px] border transition duration-300 hover:-translate-y-1 ${
         brand
           ? 'border-transparent bg-primary-container text-on-primary-container'
-          : 'border-surface-container-high bg-surface-container hover:border-primary/30'
+          : 'glass-card hover:border-primary/30'
       } ${className}`}>
       <div className="relative flex min-h-44 flex-1 items-center justify-center px-6 pt-6" aria-hidden="true">
         {visual}
@@ -97,7 +97,7 @@ function SyncGlimpse() {
     <div className="flex w-full max-w-60 items-center justify-between">
       <Node icon={<Smartphone className="h-6 w-6" />} label="Your phone" />
       <div className="relative mx-2 h-px flex-1 border-t-2 border-dashed border-primary/40">
-        <span className="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-surface-container ring-2 ring-primary/30">
+        <span className="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full glass-raised ring-2 ring-primary/30">
           <Lock className="h-4 w-4 text-primary" />
         </span>
       </div>
@@ -255,7 +255,7 @@ function CategoriesGlimpse() {
   return (
     <div className="flex max-w-64 flex-wrap justify-center gap-2">
       {chips.map(([name, color]) => (
-        <span key={name} className="inline-flex items-center gap-1.5 rounded-full border border-surface-container-highest bg-surface px-3 py-1.5 text-xs font-medium">
+        <span key={name} className="glass-raised inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium">
           <span className="h-2 w-2 rounded-full" style={{ background: color }} />
           {name}
         </span>
@@ -284,7 +284,7 @@ function BackupGlimpse() {
 
 function FileChip({ icon, name, meta }: { icon: ReactNode; name: string; meta: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-surface-container-highest bg-surface px-3.5 py-2.5">
+    <div className="glass-raised flex items-center gap-3 rounded-2xl px-3.5 py-2.5">
       <span className="text-primary">{icon}</span>
       <span className="min-w-0">
         <span className="block truncate text-xs font-semibold">{name}</span>
@@ -298,7 +298,7 @@ function FileChip({ icon, name, meta }: { icon: ReactNode; name: string; meta: s
 
 export function Features() {
   return (
-    <section id="features" aria-labelledby="features-title" className="features-bg relative overflow-hidden border-t border-surface-container-high py-24">
+    <section id="features" aria-labelledby="features-title" className="features-bg relative overflow-hidden py-24">
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
           <div>
