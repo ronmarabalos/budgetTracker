@@ -97,6 +97,15 @@ export function PrivacyPage() {
             not stored. You can turn it off under Account → Smart category suggestions.
           </p>
 
+          <H2>Spending forecasts</H2>
+          <p>
+            When Spending forecasts is on (it is on by default), the app sends our server your <strong>daily spending
+            total per category</strong> for this month and the six before it, so it can estimate where the month will end
+            and what next month may cost. It never sends descriptions, accounts or your identity, and the names of
+            categories you created are not sent. Nothing is stored. Without a connection the app estimates on your phone
+            instead. You can turn it off under Account → Spending forecasts.
+          </p>
+
           <H2>Google sign-in</H2>
           <p>
             If you choose “Continue with Google”, Google authenticates you and returns an identity token. The app sends
