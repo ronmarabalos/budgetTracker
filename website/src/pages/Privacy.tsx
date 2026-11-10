@@ -3,7 +3,7 @@ import { GardenBackdrop } from '../components/GardenBackdrop';
 import { Nav } from '../components/Nav';
 import { APP_NAME, contactEmail } from '../config';
 
-const EFFECTIVE_DATE = 'September 28, 2026';
+const EFFECTIVE_DATE = 'November 11, 2026';
 
 function H2({ children }: { children: React.ReactNode }) {
   return <h2 className="mt-12 text-2xl font-bold tracking-tight">{children}</h2>;
@@ -43,6 +43,10 @@ export function PrivacyPage() {
             <li>
               <strong>Smart category suggestions</strong> send only the description you type to suggest a category. It’s
               on by default and you can <strong>turn it off</strong> in Account.
+            </li>
+            <li>
+              <strong>Chat with Ollie</strong> sends only the question you type. Your transactions stay on your phone, which
+              works out the answer itself.
             </li>
             <li>We do not collect analytics, show ads, or sell or share personal information.</li>
           </ul>
@@ -104,6 +108,14 @@ export function PrivacyPage() {
             and what next month may cost. It never sends descriptions, accounts or your identity, and the names of
             categories you created are not sent. Nothing is stored. Without a connection the app estimates on your phone
             instead. You can turn it off under Account → Spending forecasts.
+          </p>
+
+          <H2>Chat with Ollie</H2>
+          <p>
+            When you ask Ollie a question, the app sends our server <strong>only the text of your question</strong> and
+            today’s date, so it can tell what you are asking (for example, “spending” and “last week”). It never sends
+            your transactions, amounts, accounts or your identity: your phone adds up the answer from your own data.
+            Questions are not stored. Chat needs an internet connection and is only used when you open it and ask.
           </p>
 
           <H2>Google sign-in</H2>
