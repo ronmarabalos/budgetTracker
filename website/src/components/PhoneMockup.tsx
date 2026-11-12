@@ -1,9 +1,8 @@
 import {
   ArrowBack,
-  ArrowExpense,
-  ArrowIncome,
   ArrowUp,
   Backspace,
+  Chat,
   ChevronRight,
   Fingerprint,
   Leaf,
@@ -12,6 +11,8 @@ import {
   TabGoals,
   TabHome,
   TabTransactions,
+  TrendDown,
+  TrendUp,
   User,
   Wallet,
 } from './icons';
@@ -63,31 +64,28 @@ function Hero({ children, className = '' }: { children: React.ReactNode; classNa
   );
 }
 
-function StatusPill({ offline = false }: { offline?: boolean }) {
-  return (
-    <span className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[8px] font-semibold ${heroChip}`}>
-      <span className={`h-1.5 w-1.5 rounded-full ${offline ? 'bg-white/60' : 'bg-white'}`} />
-      {offline ? 'Offline' : 'Online'}
-    </span>
-  );
-}
-
+/** The app's floating icon-only tab pill: a dark circle marks the active tab. */
 function TabBar() {
-  const tabs = [
-    { icon: TabHome, label: 'Home', active: true },
-    { icon: TabTransactions, label: 'Transactions' },
-    { icon: TabGoals, label: 'Goals' },
-    { icon: User, label: 'Profile' },
-  ];
+  const tabs = [TabHome, TabTransactions, TabGoals, User];
   return (
-    <div className="glass-card absolute inset-x-3 bottom-3 flex h-12 items-center justify-around rounded-full">
-      {tabs.map(({ icon: Icon, label, active }) => (
-        <span key={label} className={`flex flex-col items-center gap-0.5 ${active ? 'text-primary' : 'text-on-surface-variant'}`}>
-          <Icon className="h-3.5 w-3.5" strokeWidth={active ? 2.2 : 1.5} />
-          <span className={`text-[7px] ${active ? 'font-semibold' : ''}`}>{label}</span>
+    <div className="glass-card absolute inset-x-0 bottom-3 mx-auto flex h-10 w-[184px] items-center justify-between rounded-full px-1.5">
+      {tabs.map((Icon, i) => (
+        <span
+          key={i}
+          className={`flex h-8 w-8 items-center justify-center rounded-full ${i === 0 ? 'bg-on-surface text-surface' : 'text-on-surface-variant'}`}>
+          <Icon className="h-4 w-4" strokeWidth={i === 0 ? 2 : 1.5} />
         </span>
       ))}
     </div>
+  );
+}
+
+/** Grey 15% tile with an ink icon — the app's IconBadge. */
+function IconTile({ icon: Icon, className = '' }: { icon: typeof Wallet; className?: string }) {
+  return (
+    <span className={`flex items-center justify-center rounded-lg bg-outline/15 text-on-surface ${className}`}>
+      <Icon className="h-3 w-3" strokeWidth={2} />
+    </span>
   );
 }
 
@@ -117,52 +115,64 @@ function Donut({ size = 56 }: { size?: number }) {
 
 export function HomeScreenMock() {
   const flows = [
-    { label: 'Income this month', value: '₱ 26,000', trend: '+8.4% vs last month', tone: 'text-success', tint: 'tint-income', badge: 'bg-success/15', icon: ArrowIncome },
-    { label: 'Spent this month', value: '₱ 9,580', trend: '-3.1% vs last month', tone: 'text-secondary', tint: 'tint-expense', badge: 'bg-secondary-container/20', icon: ArrowExpense },
+    { label: 'Income', value: '₱ 26,000.00', trend: '+8.4% vs last month', tone: 'text-success', tint: 'tint-income', icon: TrendUp },
+    { label: 'Spent', value: '₱ 9,580.00', trend: '-3.1% vs last month', tone: 'text-secondary', tint: 'tint-expense', icon: TrendDown },
   ];
   return (
     <div className="relative h-full">
-      <Hero>
+      <Hero className="pb-3">
         <div className="flex items-center justify-between">
           <Logo />
           <span className={`rounded-full px-2 py-0.5 text-[8px] font-medium ${heroChip}`}>September 2026</span>
         </div>
-        <p className="mt-2.5 text-[9px] text-white/80">Good afternoon, Ron 👋</p>
-        <div className={`mt-1.5 rounded-2xl p-3 ${heroChip}`}>
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-[7px] font-semibold uppercase tracking-wider text-white/75">Total Balance</p>
-              <p className="mt-0.5 text-[20px] font-extrabold tracking-tight">₱ 48,250.00</p>
-            </div>
-            <Wallet className="h-3.5 w-3.5 text-white/80" />
+        <p className="mt-2 text-[14px] font-bold tracking-tight">Good afternoon, Ron 👋</p>
+        {/* Ollie the Otter with his message, as on the app's Home. */}
+        <div className="relative mt-1 flex items-end">
+          <div className={`absolute inset-x-0 bottom-0 h-3/5 rounded-xl ${heroChip}`} />
+          <img src="/ollie-happy.webp" alt="" width={64} height={66} className="relative h-[66px] w-16 object-contain" />
+          <div className="glass-card relative mb-2 mr-2 flex-1 rounded-xl p-2 text-on-surface">
+            <p className="text-[8px] font-bold text-primary">Ollie</p>
+            <p className="mt-0.5 text-[7.5px] leading-[10px] text-on-surface-variant">You’re on track this week. Nice saving on food!</p>
+            <p className="mt-1 flex items-center gap-0.5 text-[7.5px] font-semibold text-primary">
+              <Chat className="h-2.5 w-2.5 text-on-surface" /> Chat with Ollie
+            </p>
           </div>
-          <p className="mt-2 text-[7px] text-white/70">Cash · GCash · Bank</p>
-        </div>
-        <div className="mt-2 flex items-center gap-1.5">
-          <span className={`inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-[8px] font-medium ${heroChip}`}>
-            <ArrowUp className="h-2.5 w-2.5" /> +₱ 6,420 this month
-          </span>
-          <span className="text-[7px] text-white/70">On this device</span>
-        </div>
-        <div className="mt-2.5 flex gap-1.5">
-          <span className="flex h-7 flex-1 items-center justify-center gap-1 rounded-full bg-white text-[8.5px] font-bold text-[#8e1b0c]">
-            <Plus className="h-3 w-3" /> Add
-          </span>
-          <span className={`flex h-7 flex-1 items-center justify-center gap-1 rounded-full text-[8.5px] font-semibold ${heroChip}`}>
-            <PieChart className="h-3 w-3" /> Reports
-          </span>
         </div>
       </Hero>
       <div className="space-y-2.5 px-3.5 pt-3">
+        <div className="glass-card relative overflow-hidden rounded-xl p-3">
+          <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--primary)_16%,transparent),transparent_70%)]" />
+          <div className="relative flex items-center justify-between">
+            <p className="text-[7px] font-semibold uppercase tracking-wider text-on-surface-variant">Total Balance</p>
+            <IconTile icon={Wallet} className="h-6 w-6" />
+          </div>
+          <p className="relative mt-0.5 text-[20px] font-extrabold tracking-tight">₱ 48,250.00</p>
+          <div className="relative mt-1.5 flex items-center justify-between">
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-success/15 px-2 py-0.5 text-[7.5px] font-semibold text-success">
+              <ArrowUp className="h-2.5 w-2.5 text-on-surface" /> +₱ 6,420.00 this month
+            </span>
+            <span className="text-[6.5px] text-on-surface-variant">Stored on device</span>
+          </div>
+        </div>
+
+        <div className="flex gap-2">
+          <span className="hero-button flex h-7 flex-1 items-center justify-center gap-1 rounded-full text-[8.5px] font-semibold text-white">
+            <Plus className="h-3 w-3" /> Add
+          </span>
+          <span className="glass-card flex h-7 flex-1 items-center justify-center gap-1 rounded-full text-[8.5px] font-semibold">
+            <PieChart className="h-3 w-3" /> Reports
+          </span>
+        </div>
+
         <div className="grid grid-cols-2 gap-2">
-          {flows.map(({ icon: Icon, ...c }) => (
-            <div key={c.label} className={`glass-card ${c.tint} rounded-xl p-2.5`}>
-              <span className={`mb-1.5 flex h-5 w-5 items-center justify-center rounded-full ${c.badge}`}>
-                <Icon className={`h-3 w-3 ${c.tone}`} />
-              </span>
-              <p className="text-[7px] text-on-surface-variant">{c.label}</p>
-              <p className="text-[11px] font-bold">{c.value}</p>
-              <p className={`text-[7px] font-semibold ${c.tone}`}>{c.trend}</p>
+          {flows.map(({ icon, ...c }) => (
+            <div key={c.label} className={`glass-card ${c.tint} rounded-xl px-2.5 py-2`}>
+              <div className="mb-1 flex items-center gap-1.5">
+                <IconTile icon={icon} className="h-5 w-5" />
+                <p className="text-[7.5px] font-medium text-on-surface-variant">{c.label}</p>
+              </div>
+              <p className="text-[11px] font-bold tracking-tight">{c.value}</p>
+              <p className={`mt-0.5 flex items-center gap-0.5 text-[6.5px] font-semibold ${c.tone}`}>{c.trend}</p>
             </div>
           ))}
         </div>
@@ -191,8 +201,8 @@ export function HomeScreenMock() {
         </div>
 
         <div className="glass-card flex items-center gap-2.5 rounded-xl p-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--glass-accent-badge)] text-[var(--glass-accent)]">
-            <Leaf className="h-4 w-4" strokeWidth={2.2} />
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-outline/15 text-on-surface">
+            <Leaf className="h-4 w-4" strokeWidth={2} />
           </span>
           <div className="flex-1">
             <p className="text-[9px] font-bold">Keep it going!</p>
@@ -200,7 +210,7 @@ export function HomeScreenMock() {
               You’re <span className="font-semibold text-primary">₱ 2,420</span> under your monthly budget.
             </p>
           </div>
-          <span className="glass-raised flex h-5 w-5 items-center justify-center rounded-full text-primary">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-outline/15 text-on-surface">
             <ChevronRight className="h-3 w-3" />
           </span>
         </div>
@@ -211,39 +221,49 @@ export function HomeScreenMock() {
 }
 
 export function UnlockScreenMock() {
-  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const letters: Record<string, string> = { 2: 'ABC', 3: 'DEF', 4: 'GHI', 5: 'JKL', 6: 'MNO', 7: 'PQRS', 8: 'TUV', 9: 'WXYZ' };
+  const digit = (k: string) => (
+    <span
+      key={k}
+      className="mx-auto flex h-11 w-11 flex-col items-center justify-center rounded-full border border-outline-variant/70 bg-surface-container">
+      <span className="text-[15px] font-medium leading-none">{k}</span>
+      {letters[k] && <span className="mt-0.5 text-[5.5px] font-semibold tracking-[1px] text-on-surface-variant">{letters[k]}</span>}
+    </span>
+  );
+  // The app's PinScreen: brand mark + network badge, centred title and dots, keypad within thumb reach.
   return (
-    <div className="relative flex h-full flex-col">
-      <Hero className="pb-6">
-        <div className="flex items-center justify-between">
-          <Logo />
-          <StatusPill offline />
-        </div>
-        <p className="mt-5 text-[17px] font-bold tracking-tight">Welcome back, Ron</p>
-        <p className="mt-1 text-[10px] text-white/80">Enter your 6-digit MPIN</p>
-      </Hero>
-      <div className="relative mt-6 flex justify-center gap-3">
-        {Array.from({ length: 6 }, (_, i) => (
-          <span key={i} className={`h-2.5 w-2.5 rounded-full border-2 ${i < 4 ? 'border-primary bg-primary' : 'border-outline'}`} />
-        ))}
+    <div className="relative flex h-full flex-col pt-10 pb-4">
+      <div className="flex items-center justify-between px-4">
+        <SpendifyMark className="h-5 text-[var(--brand-ink)]" />
+        <span className="flex items-center gap-1 rounded-full bg-outline/15 px-2 py-0.5 text-[8px] font-semibold text-on-surface-variant">
+          <span className="h-1.5 w-1.5 rounded-full bg-outline" /> Offline
+        </span>
       </div>
-      <div className="relative mx-auto mt-6 grid w-[200px] grid-cols-3 gap-y-3 text-center">
-        {keys.map((k) => (
-          <span key={k} className="mx-auto flex h-11 w-11 items-center justify-center rounded-full text-[17px] font-medium">
-            {k}
-          </span>
-        ))}
-        <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full text-primary">
+      <div className="flex flex-1 flex-col items-center justify-center px-6">
+        <p className="text-[15px] font-bold tracking-tight">Welcome back, Ron</p>
+        <p className="mt-1 text-[9.5px] text-on-surface-variant">Enter your 6-digit MPIN</p>
+        <div className="mt-5 flex gap-3">
+          {Array.from({ length: 6 }, (_, i) => (
+            <span
+              key={i}
+              className={`h-2.5 w-2.5 rounded-full border-2 ${i < 4 ? 'border-primary bg-primary' : 'border-outline bg-surface-container-highest'}`}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="mx-auto grid w-[176px] grid-cols-3 gap-y-2.5">
+        {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map(digit)}
+        <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full text-on-surface">
           <Fingerprint className="h-5 w-5" />
         </span>
-        <span className="mx-auto flex h-11 w-11 items-center justify-center text-[17px] font-medium">0</span>
-        <span className="mx-auto flex h-11 w-11 items-center justify-center text-on-surface-variant">
+        {digit('0')}
+        <span className="mx-auto flex h-11 w-11 items-center justify-center text-on-surface">
           <Backspace className="h-4 w-4" />
         </span>
       </div>
-      <div className="relative mt-auto mb-6 flex justify-between px-7 text-[9px]">
+      <div className="mt-3 flex justify-between px-7 text-[9px]">
         <span className="font-semibold text-primary">Forgot MPIN?</span>
-        <span className="text-on-surface-variant">Switch account</span>
+        <span className="font-medium text-on-surface-variant">Switch account</span>
       </div>
     </div>
   );
@@ -298,7 +318,7 @@ export function ReportsScreenMock() {
         </div>
         <div className="glass-card rounded-xl p-3">
           <p className="mb-2 flex items-center gap-1 text-[9px] font-bold">
-            <PieChart className="h-3 w-3 text-primary" /> Spending by category
+            <PieChart className="h-3 w-3 text-on-surface" /> Spending by category
           </p>
           {DONUT.map((s) => (
             <div key={s.name} className="mb-1.5 flex items-center gap-1.5 text-[8px]">
