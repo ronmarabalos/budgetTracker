@@ -56,7 +56,7 @@ export function Hero({ platform }: { platform: Platform }) {
             <StoreButtons platform={platform} />
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-on-surface-variant">
-            {['Works in airplane mode', 'Syncs across your phones', 'PIN & biometric lock'].map((t) => (
+            {['Works in airplane mode', 'Syncs across your phones', 'PIN & biometric lock', 'Ask Ollie in English or Taglish'].map((t) => (
               <li key={t} className="flex items-center gap-1.5">
                 <Check className="h-4 w-4 text-primary" aria-hidden="true" />
                 {t}
@@ -109,11 +109,12 @@ export function Privacy() {
     { icon: HardDrive, text: 'Your phone always keeps the full, encrypted copy of your transactions, budgets and goals — so everything works offline' },
     { icon: Key, text: 'Your password and MPIN are never stored as text and never uploaded — only secure hashes in your phone’s keystore' },
     { icon: Lock, text: 'Optional app lock: automatic locking and a lockout after repeated wrong PIN attempts' },
+    { icon: ServerOff, text: 'Smart features send only what they need (a description, daily category totals or your question), never your identity, and nothing is stored' },
   ];
   const never = [
     'Sell or share your financial data',
     'Ask for your online banking login',
-    'Upload anything from a local account, or with Cloud Sync turned off',
+    'Upload your financial records from a local account, or with Cloud Sync turned off',
     'Include ads or analytics trackers in the app',
   ];
   return (
@@ -199,8 +200,9 @@ export function HowItWorks() {
 // ── FAQ ─────────────────────────────────────────────────────────────────────
 
 const FAQS = [
-  { q: 'Do I need an internet connection?', a: 'No. Every feature works offline — recording transactions, budgets, goals, reports, export and backup. You only need a connection to sign in with Google and to sync; changes you make offline upload automatically later.' },
-  { q: 'Is my data uploaded anywhere?', a: 'Only if you sign in with Google and keep Cloud Sync on. Then a copy is kept in your private Spendify cloud account so you can use it on other phones — only your account can access it. Local accounts, or Google accounts with Cloud Sync off, keep everything on the phone.' },
+  { q: 'Do I need an internet connection?', a: 'No. Recording transactions, budgets, goals, reports, export and backup all work offline, and so do Ollie’s alerts and week types. You need a connection to sign in with Google, to sync, for category suggestions and to chat with Ollie; forecasts fall back to an estimate on your phone. Changes you make offline upload automatically later.' },
+  { q: 'Is my data uploaded anywhere?', a: 'Your records are uploaded only if you sign in with Google and keep Cloud Sync on. Then a copy is kept in your private Spendify cloud account so you can use it on other phones — only your account can access it. Smart features send only what they need: the description you type (category suggestions), daily totals per category (forecasts) or your question (chat with Ollie). Never your identity, and nothing is stored. You can turn suggestions and forecasts off in Account.' },
+  { q: 'Does Ollie use ChatGPT or read my transactions?', a: 'No. Ollie runs on small models built for Spendify. When you ask a question, our server only works out what you are asking and for which dates; your phone then adds up the answer from your own records, so your transactions never leave it.' },
   { q: 'Do I need a Google account?', a: 'No. Local accounts work fully offline. Signing in with Google adds automatic backup and sync across your phones, and you can turn sync off any time.' },
   { q: 'What if I use it on two phones while offline?', a: 'Both keep working. When they reconnect, their changes merge automatically; if the same item was edited on both, the most recent edit wins.' },
   { q: 'Does it connect to my bank or e-wallet?', a: 'No — and it never asks for your banking passwords. You record transactions yourself and keep separate balances for cash, e-wallets like GCash and Maya, and bank accounts.' },

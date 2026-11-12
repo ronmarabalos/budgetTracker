@@ -4,7 +4,7 @@ import { DownloadSection } from '../components/DownloadSection';
 import { Footer } from '../components/Footer';
 import { PageBackdrop } from '../components/PageBackdrop';
 import { Nav } from '../components/Nav';
-import { Features } from '../components/Features';
+import { Features, SmartFeatures } from '../components/Features';
 import { Faq, Hero, HowItWorks, Privacy, Showcase } from '../components/Sections';
 import { detectPlatform, type Platform } from '../config';
 
@@ -22,6 +22,7 @@ export function LandingPage() {
       <main id="main">
         <Hero platform={platform} />
         <Features />
+        <SmartFeatures />
         <Showcase />
         <Privacy />
         <HowItWorks />

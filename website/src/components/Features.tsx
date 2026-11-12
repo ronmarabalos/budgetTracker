@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import {
   Airplane,
   Bell,
+  Chat,
   Check,
   Cloud,
   Csv,
@@ -15,6 +16,7 @@ import {
   ShieldCheck,
   Smartphone,
   Tag,
+  TrendUp,
   Wallet,
   WifiOff,
 } from './icons';
@@ -291,6 +293,133 @@ function FileChip({ icon, name, meta }: { icon: ReactNode; name: string; meta: s
         <span className="block text-[11px] text-on-surface-variant">{meta}</span>
       </span>
     </div>
+  );
+}
+
+// ── Ollie glimpses (sample data; wording matches the app's own messages) ───
+
+function OllieBubble({ children, brand }: { children: ReactNode; brand?: boolean }) {
+  return (
+    <div className="flex max-w-sm items-end gap-2.5">
+      <img src="/ollie-happy.webp" alt="" width={40} height={41} className="h-10 w-10 shrink-0 object-contain" />
+      <p
+        className={`rounded-2xl rounded-bl-md px-4 py-3 text-sm leading-snug ${
+          brand ? 'bg-white/[0.1] ring-1 ring-white/15' : 'glass-raised'
+        }`}>
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function AskGlimpse() {
+  return (
+    <div className="flex w-full max-w-md flex-col gap-3">
+      <p className="ml-auto max-w-[80%] rounded-2xl rounded-br-md bg-white px-4 py-2.5 text-sm font-semibold text-[#8c170b] transition duration-500 group-hover:-translate-x-1">
+        Magkano gastos ko this week?
+      </p>
+      <OllieBubble brand>
+        You spent <strong className="tabular-nums">₱3,480</strong> this week (Nov 9–12).
+      </OllieBubble>
+      <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold ring-1 ring-white/15">
+        <Lock className="h-3.5 w-3.5" /> Added up on your phone
+      </span>
+    </div>
+  );
+}
+
+function SuggestGlimpse() {
+  return (
+    <div className="w-full max-w-60 space-y-2.5">
+      <div className="glass-raised rounded-2xl px-4 py-3">
+        <span className="block text-[11px] text-on-surface-variant">Description</span>
+        <span className="text-sm font-semibold">JOLLIBEE*4821</span>
+      </div>
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/12 px-3 py-1.5 text-xs font-semibold text-primary transition duration-300 group-hover:scale-105">
+        <Check className="h-3.5 w-3.5" /> Food &amp; Drinks · tap to use
+      </span>
+    </div>
+  );
+}
+
+function ForecastGlimpse() {
+  return (
+    <div className="w-full max-w-60">
+      <div className="mb-1.5 flex justify-between text-xs">
+        <span className="font-semibold">Food</span>
+        <span className="font-semibold text-tertiary">₱14,200 by month end</span>
+      </div>
+      <div className="relative h-2 rounded-full bg-surface-container-high">
+        <span className="absolute inset-y-0 left-0 w-[58%] rounded-full bg-primary" />
+        <span className="absolute inset-y-0 left-[58%] w-[42%] rounded-r-full border-2 border-dashed border-tertiary/70" />
+        <span className="absolute inset-y-[-4px] left-[85%] w-0.5 bg-on-surface/40" />
+      </div>
+      <p className="mt-2 text-[11px] text-on-surface-variant">Budget ₱12,000 · spent ₱7,000 so far</p>
+    </div>
+  );
+}
+
+function SmartGlimpse({ text }: { text: ReactNode }) {
+  return <OllieBubble>{text}</OllieBubble>;
+}
+
+export function SmartFeatures() {
+  return (
+    <section id="ollie" aria-labelledby="ollie-title" className="relative overflow-hidden py-24">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Meet Ollie</p>
+            <h2 id="ollie-title" className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-5xl">
+              A money buddy that notices things for you.
+            </h2>
+          </div>
+          <p className="text-lg text-pretty text-on-surface-variant lg:pb-1.5">
+            Smart features that send only what they need, never your name or your records, and nothing is kept on
+            our server.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <Tile
+            brand
+            className="md:col-span-2"
+            icon={Chat}
+            title="Ask Ollie about your money"
+            body="“How much did I spend last month?” “Income this week?” Ask in English or Taglish, or ask for a money tip. Only your question is sent; your phone adds up the answer from your own records. Needs internet."
+            visual={<AskGlimpse />}
+          />
+          <Tile
+            icon={Tag}
+            title="Smart category suggestions"
+            body="Type a description and Spendify suggests the category in one tap. Only the description is sent, never the amount or account. You can turn it off."
+            visual={<SuggestGlimpse />}
+          />
+          <Tile
+            icon={TrendUp}
+            title="Spending forecasts"
+            body="See where each category is heading this month, and get a heads-up before a budget runs over. Offline, your phone estimates it."
+            visual={<ForecastGlimpse />}
+          />
+          <Tile
+            icon={Bell}
+            title="Unusual spending alerts"
+            body="Ollie points out purchases and weeks far above your usual, worked out on your phone."
+            visual={<SmartGlimpse text="That ₱4,800 Shopping purchase is about 3× your usual. Was it planned?" />}
+          />
+          <Tile
+            icon={PieChart}
+            title="What kind of week was it?"
+            body="Ollie tells you what kind of week it’s been, and Reports shows your recent weeks at a glance."
+            visual={<SmartGlimpse text={<>So far this looks like a <strong>Grocery run week</strong>. Groceries made up a big part of the week.</>} />}
+          />
+        </div>
+        <p className="mt-6 text-center text-sm text-on-surface-variant">
+          Suggestions, forecasts, alerts and week types can each be switched off in Account; chat is only used when you
+          ask. Shown with sample data.
+        </p>
+      </div>
+    </section>
   );
 }
 
