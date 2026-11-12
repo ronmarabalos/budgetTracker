@@ -108,7 +108,7 @@ export function Privacy() {
   const stays = [
     { icon: HardDrive, text: 'Your phone always keeps the full, encrypted copy of your transactions, budgets and goals — so everything works offline' },
     { icon: Key, text: 'Your password and MPIN are never stored as text and never uploaded — only secure hashes in your phone’s keystore' },
-    { icon: Lock, text: 'Automatic lock and a lockout after repeated wrong PIN attempts' },
+    { icon: Lock, text: 'Optional app lock: automatic locking and a lockout after repeated wrong PIN attempts' },
   ];
   const never = [
     'Sell or share your financial data',
@@ -170,7 +170,7 @@ export function HowItWorks() {
   const steps = [
     { icon: CloudOff, title: 'Install Spendify', body: 'Get it from the App Store or Google Play — after that, you can go offline for good.' },
     { icon: User, title: 'Sign in your way', body: 'Continue with Google to sync across your phones, or create a local account — no email or internet needed.' },
-    { icon: Fingerprint, title: 'Set your PIN & start', body: 'Create a 6-digit PIN, turn on Face ID or fingerprint, and record your first expense.' },
+    { icon: Fingerprint, title: 'Lock it & start', body: 'Add a 6-digit PIN and Face ID or fingerprint, or skip it, then record your first expense.' },
   ];
   return (
     <section id="how-it-works" aria-labelledby="how-title" className="py-24">
@@ -205,6 +205,7 @@ const FAQS = [
   { q: 'What if I use it on two phones while offline?', a: 'Both keep working. When they reconnect, their changes merge automatically; if the same item was edited on both, the most recent edit wins.' },
   { q: 'Does it connect to my bank or e-wallet?', a: 'No — and it never asks for your banking passwords. You record transactions yourself and keep separate balances for cash, e-wallets like GCash and Maya, and bank accounts.' },
   { q: 'What happens if I lose or change my phone?', a: 'With Cloud Sync, just sign in with the same Google account on your new phone and your data comes back. Without it, create a backup from Account → Data & Backup and restore it on the new phone.' },
+  { q: 'Do I have to set a PIN?', a: 'No, the MPIN is optional. Skip it and Spendify opens straight to your money, with no lock. You can add or turn off an MPIN anytime in Account → Security. Face ID and fingerprint unlock need an MPIN.' },
   { q: 'I forgot my PIN. Can I get back in?', a: 'Yes. Local accounts confirm with their password; Google accounts sign in again with the same Google account. Then you choose a new PIN.' },
   { q: 'Which phones are supported?', a: 'Spendify is available for iPhone and Android phones.' },
 ];

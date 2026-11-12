@@ -79,7 +79,7 @@ export function Nav() {
             <ThemeToggle />
             <a
               href="/#download"
-              className="ml-1 hidden rounded-full bg-primary-container px-4 py-2 text-sm font-bold text-on-primary-container shadow-sm transition hover:brightness-110 sm:inline-flex">
+              className="ml-1 hidden hero-button rounded-full px-4 py-2 text-sm font-bold shadow-sm transition hover:brightness-110 sm:inline-flex">
               Download
             </a>
             <button

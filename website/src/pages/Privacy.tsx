@@ -1,5 +1,5 @@
 import { Footer } from '../components/Footer';
-import { GardenBackdrop } from '../components/GardenBackdrop';
+import { PageBackdrop } from '../components/PageBackdrop';
 import { Nav } from '../components/Nav';
 import { APP_NAME, contactEmail } from '../config';
 
@@ -17,7 +17,7 @@ function H2({ children }: { children: React.ReactNode }) {
 export function PrivacyPage() {
   return (
     <>
-      <GardenBackdrop />
+      <PageBackdrop />
       <Nav />
       <main id="main" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Legal</p>

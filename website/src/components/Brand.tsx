@@ -6,21 +6,27 @@ import { WORDMARK } from './wordmark';
  * the theme via CSS (`.brand-on-light` / `.brand-on-dark` in styles.css). Images
  * rather than inline SVG, so their gradient ids can't collide on the page.
  */
-export function SpendifyMark({ className = 'h-9' }: { className?: string }) {
+export function SpendifyMark({ className = 'h-9', onDark }: { className?: string; /** Always the cream mark (on the hero gradient). */ onDark?: boolean }) {
   return (
     <span className={`inline-flex shrink-0 ${className}`} aria-hidden="true">
-      <img src="/brand/mark.svg" alt="" className="brand-on-light h-full w-auto" />
-      <img src="/brand/mark-dark.svg" alt="" className="brand-on-dark h-full w-auto" />
+      {onDark ? (
+        <img src="/brand/mark-dark.svg" alt="" className="h-full w-auto" />
+      ) : (
+        <>
+          <img src="/brand/mark.svg" alt="" className="brand-on-light h-full w-auto" />
+          <img src="/brand/mark-dark.svg" alt="" className="brand-on-dark h-full w-auto" />
+        </>
+      )}
     </span>
   );
 }
 
 /** “Spendify” wordmark with the leaf-dotted i; the letters follow the text colour. */
-export function SpendifyWordmark({ className = 'h-6' }: { className?: string }) {
+export function SpendifyWordmark({ className = 'h-6', onDark }: { className?: string; onDark?: boolean }) {
   return (
     <svg viewBox={WORDMARK.viewBox} className={`w-auto ${className}`} aria-hidden="true">
       <path d={WORDMARK.text} fill="currentColor" />
-      <path d={WORDMARK.leaf} className="fill-primary" />
+      <path d={WORDMARK.leaf} className={onDark ? 'fill-[#FFB899]' : 'fill-primary'} />
     </svg>
   );
 }

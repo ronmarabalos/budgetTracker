@@ -30,7 +30,7 @@ type TileProps = {
   body: string;
   visual: ReactNode;
   className?: string;
-  /** The deep-green brand tile (used once, for the headline feature). */
+  /** The ember-gradient brand tile (used once, for the headline feature). */
   brand?: boolean;
 };
 
@@ -39,7 +39,7 @@ function Tile({ icon: Icon, title, body, visual, className = '', brand }: TilePr
     <article
       className={`bento-tile group relative flex flex-col overflow-hidden rounded-[28px] border transition duration-300 hover:-translate-y-1 ${
         brand
-          ? 'border-transparent bg-primary-container text-on-primary-container'
+          ? 'hero-gradient border-transparent'
           : 'glass-card hover:border-primary/30'
       } ${className}`}>
       <div className="relative flex min-h-44 flex-1 items-center justify-center px-6 pt-6" aria-hidden="true">
@@ -47,10 +47,10 @@ function Tile({ icon: Icon, title, body, visual, className = '', brand }: TilePr
       </div>
       <div className="relative p-6 pt-5">
         <h3 className="flex items-center gap-2 text-lg font-bold">
-          <Icon className={`h-5 w-5 shrink-0 ${brand ? 'text-[#A7D08C]' : 'text-primary'}`} />
+          <Icon className={`h-5 w-5 shrink-0 ${brand ? 'text-[#FFB899]' : 'text-primary'}`} />
           {title}
         </h3>
-        <p className={`mt-2 text-[15px] leading-relaxed ${brand ? 'text-on-primary-container/85' : 'text-on-surface-variant'}`}>{body}</p>
+        <p className={`mt-2 text-[15px] leading-relaxed ${brand ? 'text-white/85' : 'text-on-surface-variant'}`}>{body}</p>
       </div>
     </article>
   );
@@ -70,8 +70,8 @@ function OfflineGlimpse() {
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/15">
           <Airplane className="h-3.5 w-3.5" /> Airplane mode
         </span>
-        <span className="inline-flex items-center gap-1.5 text-xs text-on-primary-container/70">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" /> 3 changes waiting to sync
+        <span className="inline-flex items-center gap-1.5 text-xs text-white/75">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#F5B13D]" /> 3 changes waiting to sync
         </span>
       </div>
       <ul className="space-y-2">
@@ -82,8 +82,8 @@ function OfflineGlimpse() {
             style={{ transitionDelay: `${i * 60}ms` }}>
             <span className="text-sm font-semibold">{r.name}</span>
             <span className="flex items-center gap-3">
-              <span className="hidden text-[11px] text-on-primary-container/60 sm:inline">Saved on phone</span>
-              <span className={`text-sm font-bold tabular-nums ${r.amount.startsWith('+') ? 'text-[#A7D08C]' : ''}`}>{r.amount}</span>
+              <span className="hidden text-[11px] text-white/65 sm:inline">Saved on phone</span>
+              <span className={`text-sm font-bold tabular-nums ${r.amount.startsWith('+') ? 'text-[#B8F0CB]' : ''}`}>{r.amount}</span>
             </span>
           </li>
         ))}
@@ -111,7 +111,7 @@ function Node({ icon, label, muted }: { icon: ReactNode; label: string; muted?: 
     <div className="flex flex-col items-center gap-2">
       <span
         className={`flex h-14 w-14 items-center justify-center rounded-2xl ${
-          muted ? 'border-2 border-dashed border-primary/35 text-primary' : 'bg-primary-container text-on-primary-container'
+          muted ? 'border-2 border-dashed border-primary/35 text-primary' : 'hero-button'
         }`}>
         {icon}
       </span>
@@ -205,15 +205,15 @@ function ReportsGlimpse() {
   return (
     <div className="w-full max-w-lg">
       <div className="mb-3 flex gap-4 text-xs text-on-surface-variant">
-        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary" /> Income</span>
-        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-tertiary" /> Spending</span>
+        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-success" /> Income</span>
+        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary" /> Spending</span>
       </div>
       <div className="flex h-32 items-end justify-between gap-3">
         {months.map(([m, inc, out], i) => (
           <div key={m} className="flex h-full flex-1 flex-col items-center gap-1.5">
             <div className="flex w-full flex-1 items-end justify-center gap-1">
-              <span className="bento-bar w-full max-w-4 rounded-t-md bg-primary" style={{ height: `${inc}%`, animationDelay: `${i * 40}ms` }} />
-              <span className="bento-bar w-full max-w-4 rounded-t-md bg-tertiary/70" style={{ height: `${out}%`, animationDelay: `${i * 40 + 20}ms` }} />
+              <span className="bento-bar w-full max-w-4 rounded-t-md bg-success" style={{ height: `${inc}%`, animationDelay: `${i * 40}ms` }} />
+              <span className="bento-bar w-full max-w-4 rounded-t-md bg-primary/80" style={{ height: `${out}%`, animationDelay: `${i * 40 + 20}ms` }} />
             </div>
             <span className="text-[11px] text-on-surface-variant">{m}</span>
           </div>
@@ -225,7 +225,7 @@ function ReportsGlimpse() {
 
 function WalletsGlimpse() {
   const cards = [
-    { name: 'Bank', amount: '₱34,620', cls: 'bg-primary-container text-on-primary-container' },
+    { name: 'Bank', amount: '₱34,620', cls: 'hero-gradient' },
     { name: 'GCash', amount: '₱8,450', cls: 'bg-primary text-on-primary' },
     { name: 'Cash', amount: '₱3,200', cls: 'bg-surface-container-highest text-on-surface' },
   ];
@@ -246,11 +246,11 @@ function WalletsGlimpse() {
 
 function CategoriesGlimpse() {
   const chips = [
-    ['Food & Drinks', '#C8501E'],
-    ['Bills', '#2E7D32'],
-    ['Transport', '#D4AF37'],
-    ['Groceries', '#4E8F6A'],
-    ['Health', '#5DA544'],
+    ['Food & Drinks', 'var(--primary)'],
+    ['Bills', 'var(--tertiary-container)'],
+    ['Transport', 'var(--secondary)'],
+    ['Groceries', 'var(--success)'],
+    ['Health', 'var(--on-surface)'],
   ];
   return (
     <div className="flex max-w-64 flex-wrap justify-center gap-2">
@@ -330,7 +330,7 @@ export function Features() {
           <Tile
             icon={Fingerprint}
             title="MPIN, Face ID & fingerprint"
-            body="Lock the app with a 6-digit MPIN and unlock with biometrics. It auto-locks when you leave it in the background."
+            body="Lock the app with an optional 6-digit MPIN and unlock with biometrics. It auto-locks when you leave it in the background."
             visual={<PinGlimpse />}
           />
           <Tile

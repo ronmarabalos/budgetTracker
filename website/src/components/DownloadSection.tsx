@@ -13,7 +13,7 @@ function PageQrCode() {
   const [svg, setSvg] = useState<string | null>(null);
   useEffect(() => {
     const url = `${window.location.origin}${window.location.pathname}#download`;
-    QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#06160f', light: '#ffffff' } })
+    QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#17110f', light: '#ffffff' } })
       .then(setSvg)
       .catch(() => setSvg(null));
   }, []);

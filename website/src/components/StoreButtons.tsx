@@ -65,7 +65,7 @@ export function ApkButton({ className = '' }: { className?: string }) {
   return (
     <a
       href={apk}
-      className={`group inline-flex h-14 items-center gap-3 rounded-xl bg-primary-container px-5 text-on-primary-container shadow-card transition hover:-translate-y-0.5 hover:brightness-110 ${className}`}>
+      className={`group inline-flex h-14 items-center gap-3 hero-button rounded-full px-6 shadow-card transition hover:-translate-y-0.5 hover:brightness-110 ${className}`}>
       <AndroidLogo className="h-6 w-6" />
       <span className="flex flex-col text-left leading-tight">
         <span className="text-[16px] font-bold tracking-tight">Download for Android</span>
