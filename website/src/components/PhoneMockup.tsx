@@ -64,16 +64,20 @@ function Hero({ children, className = '' }: { children: React.ReactNode; classNa
   );
 }
 
-/** The app's floating icon-only tab pill: a dark circle marks the active tab. */
+/** The app's floating tab pill: an icon over a label per tab, the active one in the brand colour. */
 function TabBar() {
-  const tabs = [TabHome, TabTransactions, TabGoals, User];
+  const tabs = [
+    [TabHome, 'Home'],
+    [TabTransactions, 'Transactions'],
+    [TabGoals, 'Goals'],
+    [User, 'Profile'],
+  ] as const;
   return (
-    <div className="glass-card absolute inset-x-0 bottom-3 mx-auto flex h-10 w-[184px] items-center justify-between rounded-full px-1.5">
-      {tabs.map((Icon, i) => (
-        <span
-          key={i}
-          className={`flex h-8 w-8 items-center justify-center rounded-full ${i === 0 ? 'bg-on-surface text-surface' : 'text-on-surface-variant'}`}>
+    <div className="glass-card absolute inset-x-3 bottom-3 flex h-11 items-center justify-around rounded-full px-1">
+      {tabs.map(([Icon, label], i) => (
+        <span key={label} className={`flex flex-col items-center ${i === 0 ? 'text-primary' : 'text-on-surface-variant'}`}>
           <Icon className="h-4 w-4" strokeWidth={i === 0 ? 2 : 1.5} />
+          <span className={`mt-0.5 text-[7px] leading-none tracking-wide ${i === 0 ? 'font-semibold' : ''}`}>{label}</span>
         </span>
       ))}
     </div>
