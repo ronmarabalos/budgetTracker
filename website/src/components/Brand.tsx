@@ -26,7 +26,7 @@ export function SpendifyWordmark({ className = 'h-6', onDark }: { className?: st
   return (
     <svg viewBox={WORDMARK.viewBox} className={`w-auto ${className}`} aria-hidden="true">
       <path d={WORDMARK.text} fill="currentColor" />
-      <path d={WORDMARK.leaf} className={onDark ? 'fill-[#FFB899]' : 'fill-primary'} />
+      <path d={WORDMARK.leaf} className={onDark ? 'fill-[#A7D08C]' : 'fill-primary'} />
     </svg>
   );
 }

@@ -49,7 +49,7 @@ function Tile({ icon: Icon, title, body, visual, className = '', brand }: TilePr
       </div>
       <div className="relative p-6 pt-5">
         <h3 className="flex items-center gap-2 text-lg font-bold">
-          <Icon className={`h-5 w-5 shrink-0 ${brand ? 'text-[#FFB899]' : 'text-primary'}`} />
+          <Icon className={`h-5 w-5 shrink-0 ${brand ? 'text-[#C5E1A5]' : 'text-primary'}`} />
           {title}
         </h3>
         <p className={`mt-2 text-[15px] leading-relaxed ${brand ? 'text-white/85' : 'text-on-surface-variant'}`}>{body}</p>
@@ -315,7 +315,7 @@ function OllieBubble({ children, brand }: { children: ReactNode; brand?: boolean
 function AskGlimpse() {
   return (
     <div className="flex w-full max-w-md flex-col gap-3">
-      <p className="ml-auto max-w-[80%] rounded-2xl rounded-br-md bg-white px-4 py-2.5 text-sm font-semibold text-[#8c170b] transition duration-500 group-hover:-translate-x-1">
+      <p className="ml-auto max-w-[80%] rounded-2xl rounded-br-md bg-white px-4 py-2.5 text-sm font-semibold text-[#1B4D34] transition duration-500 group-hover:-translate-x-1">
         Magkano gastos ko this week?
       </p>
       <OllieBubble brand>

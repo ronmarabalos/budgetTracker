@@ -3,133 +3,133 @@
 @import '@fontsource-variable/inter';
 
 /*
- * Spendify "ember" brand tokens — the same palettes the mobile app uses
+ * Spendify green brand tokens — the same palettes the mobile app uses
  * (mobile/src/theme/palette.js and ThemeProvider.tsx). Light is the default;
  * dark applies when the visitor's system prefers it, unless they picked a
  * theme with the toggle.
  */
 :root {
-  --surface: #f5f3f2;
-  --surface-container-lowest: #efebe9;
-  --surface-container-low: #fcfbfa;
+  --surface: #f7f6ee;
+  --surface-container-lowest: #eeece1;
+  --surface-container-low: #fbfaf5;
   --surface-container: #ffffff;
-  --surface-container-high: #f2eeec;
-  --surface-container-highest: #e7e1de;
-  --on-surface: #17110f;
-  --on-surface-variant: #665c58;
-  --outline: #7c716d;
-  --outline-variant: #e3dcd8;
-  --primary: #c4380e;
-  --primary-container: #b3260c;
+  --surface-container-high: #eceae0;
+  --surface-container-highest: #e0ded2;
+  --on-surface: #17251c;
+  --on-surface-variant: #4d5a50;
+  --outline: #687168;
+  --outline-variant: #cbccc0;
+  --primary: #2e7d32;
+  --primary-container: #1b4d34;
   --on-primary: #ffffff;
   --on-primary-container: #ffffff;
-  --primary-fixed: #ffdcc8;
-  --secondary: #b42318;
-  --secondary-container: #d92d20;
-  --tertiary: #94600a;
-  --tertiary-container: #f5b13d;
+  --primary-fixed: #a7d08c;
+  --secondary: #b4461a;
+  --secondary-container: #c8501e;
+  --tertiary: #8a6a12;
+  --tertiary-container: #d4af37;
   --success: #1e7f45;
-  --brand-ink: #17110f;
-  /* Brand gradient (deep red → orange → peach) for hero panels and primary buttons. */
-  --hero-gradient: linear-gradient(180deg, #6e0e08 0%, #b3200f 38%, #e2511d 78%, #f08a4b 100%);
-  --hero-button: linear-gradient(135deg, #b3200f, #e2511d);
-  --bt-shadow-card: 0 12px 32px -12px rgb(70 24 10 / 0.16);
-  --bt-shadow-phone: 0 40px 80px -30px rgb(70 24 10 / 0.4);
+  --brand-ink: #17251c;
+  /* Brand gradient (deep green → green) for hero panels and primary buttons. */
+  --hero-gradient: linear-gradient(180deg, #0b2416 0%, #1b4d34 38%, #256b33 78%, #2e7d32 100%);
+  --hero-button: linear-gradient(135deg, #1b4d34, #2e7d32);
+  --bt-shadow-card: 0 12px 32px -12px rgb(15 40 25 / 0.16);
+  --bt-shadow-phone: 0 40px 80px -30px rgb(15 40 25 / 0.4);
   /* Clean solid cards with a hairline edge and soft lift — mirrors glassByScheme in the app. */
   --glass-fill: #ffffff;
   --glass-fill-strong: #ffffff;
-  --glass-edge: rgb(227 220 216 / 0.7);
-  --glass-shadow: 0 10px 28px -12px rgb(70 24 10 / 0.16);
-  --glass-accent-badge: rgb(255 220 200 / 0.7);
-  --glass-accent: #c4380e;
+  --glass-edge: rgb(203 204 192 / 0.7);
+  --glass-shadow: 0 10px 28px -12px rgb(15 40 25 / 0.16);
+  --glass-accent-badge: rgb(167 208 140 / 0.7);
+  --glass-accent: #2e7d32;
   --tint-income: linear-gradient(135deg, rgb(222 244 229 / 0.9), #ffffff);
   --tint-expense: linear-gradient(135deg, rgb(255 226 212 / 0.9), #ffffff);
-  /* Page wash: warm grey with one faint ember glow in the top corner. */
-  --backdrop-top: #fbf4f0;
-  --backdrop-bottom: #f5f3f2;
-  --backdrop-glow: rgb(255 201 168 / 0.35);
+  /* Page wash: warm grey with one faint green glow in the top corner. */
+  --backdrop-top: #f2f6ea;
+  --backdrop-bottom: #f7f6ee;
+  --backdrop-glow: rgb(197 225 165 / 0.35);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --surface: #120d0c;
-    --surface-container-lowest: #0c0807;
-    --surface-container-low: #1a1312;
-    --surface-container: #1e1715;
-    --surface-container-high: #2a211f;
-    --surface-container-highest: #362b28;
-    --on-surface: #f7efec;
-    --on-surface-variant: #cdbfba;
-    --outline: #9a8c87;
-    --outline-variant: #433733;
-    --primary: #ff8f5e;
-    --primary-container: #c8361a;
-    --on-primary: #2b0d04;
+    --surface: #0b1a12;
+    --surface-container-lowest: #07120c;
+    --surface-container-low: #102219;
+    --surface-container: #14281d;
+    --surface-container-high: #1c3326;
+    --surface-container-highest: #264030;
+    --on-surface: #f1efe4;
+    --on-surface-variant: #c4cbbd;
+    --outline: #8c978b;
+    --outline-variant: #3e4d42;
+    --primary: #a7d08c;
+    --primary-container: #2e7d32;
+    --on-primary: #0b1a12;
     --on-primary-container: #ffffff;
-    --primary-fixed: #ffb899;
-    --secondary: #ff9a8a;
-    --secondary-container: #c0302a;
-    --tertiary: #f2c46b;
-    --tertiary-container: #c98a12;
+    --primary-fixed: #c5e1a5;
+    --secondary: #ffb59a;
+    --secondary-container: #c8501e;
+    --tertiary: #e3c45e;
+    --tertiary-container: #d4af37;
     --success: #6fd394;
-    --brand-ink: #ffffff;
-    --hero-gradient: linear-gradient(180deg, #3d0703 0%, #8c170b 40%, #c8401a 80%, #dd6a33 100%);
-    --hero-button: linear-gradient(135deg, #8c170b, #c8401a);
+    --brand-ink: #f1efe4;
+    --hero-gradient: linear-gradient(180deg, #06140c 0%, #0f3322 40%, #1b4d34 80%, #24692c 100%);
+    --hero-button: linear-gradient(135deg, #0f3322, #1b4d34);
     --bt-shadow-card: 0 20px 40px -16px rgb(0 0 0 / 0.6);
     --bt-shadow-phone: 0 40px 90px -30px rgb(0 0 0 / 0.9);
-    --glass-fill: #1e1715;
-    --glass-fill-strong: #2a211f;
-    --glass-edge: rgb(247 239 236 / 0.1);
+    --glass-fill: #14281d;
+    --glass-fill-strong: #1c3326;
+    --glass-edge: rgb(241 239 228 / 0.1);
     --glass-shadow: 0 14px 34px -10px rgb(0 0 0 / 0.6);
-    --glass-accent-badge: rgb(255 143 94 / 0.15);
-    --glass-accent: #ff8f5e;
-    --tint-income: linear-gradient(135deg, rgb(30 127 69 / 0.28), #1e1715);
-    --tint-expense: linear-gradient(135deg, rgb(200 54 26 / 0.3), #1e1715);
-    --backdrop-top: #1a100d;
-    --backdrop-bottom: #120d0c;
-    --backdrop-glow: rgb(200 54 26 / 0.18);
+    --glass-accent-badge: rgb(197 225 165 / 0.15);
+    --glass-accent: #a7d08c;
+    --tint-income: linear-gradient(135deg, rgb(30 127 69 / 0.28), #14281d);
+    --tint-expense: linear-gradient(135deg, rgb(200 80 30 / 0.3), #14281d);
+    --backdrop-top: #10221a;
+    --backdrop-bottom: #0b1a12;
+    --backdrop-glow: rgb(46 125 50 / 0.18);
     color-scheme: dark;
   }
 }
 
 :root[data-theme='dark'] {
-  --surface: #120d0c;
-  --surface-container-lowest: #0c0807;
-  --surface-container-low: #1a1312;
-  --surface-container: #1e1715;
-  --surface-container-high: #2a211f;
-  --surface-container-highest: #362b28;
-  --on-surface: #f7efec;
-  --on-surface-variant: #cdbfba;
-  --outline: #9a8c87;
-  --outline-variant: #433733;
-  --primary: #ff8f5e;
-  --primary-container: #c8361a;
-  --on-primary: #2b0d04;
+  --surface: #0b1a12;
+  --surface-container-lowest: #07120c;
+  --surface-container-low: #102219;
+  --surface-container: #14281d;
+  --surface-container-high: #1c3326;
+  --surface-container-highest: #264030;
+  --on-surface: #f1efe4;
+  --on-surface-variant: #c4cbbd;
+  --outline: #8c978b;
+  --outline-variant: #3e4d42;
+  --primary: #a7d08c;
+  --primary-container: #2e7d32;
+  --on-primary: #0b1a12;
   --on-primary-container: #ffffff;
-  --primary-fixed: #ffb899;
-  --secondary: #ff9a8a;
-  --secondary-container: #c0302a;
-  --tertiary: #f2c46b;
-  --tertiary-container: #c98a12;
+  --primary-fixed: #c5e1a5;
+  --secondary: #ffb59a;
+  --secondary-container: #c8501e;
+  --tertiary: #e3c45e;
+  --tertiary-container: #d4af37;
   --success: #6fd394;
-  --brand-ink: #ffffff;
-  --hero-gradient: linear-gradient(180deg, #3d0703 0%, #8c170b 40%, #c8401a 80%, #dd6a33 100%);
-  --hero-button: linear-gradient(135deg, #8c170b, #c8401a);
+  --brand-ink: #f1efe4;
+  --hero-gradient: linear-gradient(180deg, #06140c 0%, #0f3322 40%, #1b4d34 80%, #24692c 100%);
+  --hero-button: linear-gradient(135deg, #0f3322, #1b4d34);
   --bt-shadow-card: 0 20px 40px -16px rgb(0 0 0 / 0.6);
   --bt-shadow-phone: 0 40px 90px -30px rgb(0 0 0 / 0.9);
-  --glass-fill: #1e1715;
-  --glass-fill-strong: #2a211f;
-  --glass-edge: rgb(247 239 236 / 0.1);
+  --glass-fill: #14281d;
+  --glass-fill-strong: #1c3326;
+  --glass-edge: rgb(241 239 228 / 0.1);
   --glass-shadow: 0 14px 34px -10px rgb(0 0 0 / 0.6);
-  --glass-accent-badge: rgb(255 143 94 / 0.15);
-  --glass-accent: #ff8f5e;
-  --tint-income: linear-gradient(135deg, rgb(30 127 69 / 0.28), #1e1715);
-  --tint-expense: linear-gradient(135deg, rgb(200 54 26 / 0.3), #1e1715);
-  --backdrop-top: #1a100d;
-  --backdrop-bottom: #120d0c;
-  --backdrop-glow: rgb(200 54 26 / 0.18);
+  --glass-accent-badge: rgb(197 225 165 / 0.15);
+  --glass-accent: #a7d08c;
+  --tint-income: linear-gradient(135deg, rgb(30 127 69 / 0.28), #14281d);
+  --tint-expense: linear-gradient(135deg, rgb(200 80 30 / 0.3), #14281d);
+  --backdrop-top: #10221a;
+  --backdrop-bottom: #0b1a12;
+  --backdrop-glow: rgb(46 125 50 / 0.18);
   color-scheme: dark;
 }
 
@@ -254,7 +254,7 @@
   border: 1px solid var(--glass-border);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent),
-    0 8px 24px -14px rgb(70 24 10 / 0.18);
+    0 8px 24px -14px rgb(15 40 25 / 0.18);
   backdrop-filter: blur(18px) saturate(1.6);
   -webkit-backdrop-filter: blur(18px) saturate(1.6);
 }
@@ -262,7 +262,7 @@
   background: color-mix(in srgb, var(--surface-container) 92%, transparent);
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent),
-    0 18px 40px -18px rgb(70 24 10 / 0.26);
+    0 18px 40px -18px rgb(15 40 25 / 0.26);
 }
 :root[data-theme='dark'] .glass-nav {
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 18px 40px -18px rgb(0 0 0 / 0.8);
