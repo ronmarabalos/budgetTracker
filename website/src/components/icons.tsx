@@ -44,6 +44,9 @@ import Tick02Icon from '@hugeicons/core-free-icons/Tick02Icon';
 import UserIcon from '@hugeicons/core-free-icons/UserIcon';
 import Wallet01Icon from '@hugeicons/core-free-icons/Wallet01Icon';
 import WifiOff01Icon from '@hugeicons/core-free-icons/WifiOff01Icon';
+import ArrowLeft01Icon from '@hugeicons/core-free-icons/ArrowLeft01Icon';
+import BarChartIcon from '@hugeicons/core-free-icons/BarChartIcon';
+import ViewIcon from '@hugeicons/core-free-icons/ViewIcon';
 import { HugeiconsIcon, type HugeiconsProps, type IconSvgElement } from '@hugeicons/react';
 
 /**
@@ -119,3 +122,6 @@ export const TrendUp = make(ChartIncreaseIcon, 'TrendUp');
 export const TrendDown = make(ChartDecreaseIcon, 'TrendDown');
 export const Chat = make(BubbleChatIcon, 'Chat');
 export const Backspace = make(KeypadBackspaceIcon, 'Backspace');
+export const ChevronLeft = make(ArrowLeft01Icon, 'ChevronLeft');
+export const BarChart = make(BarChartIcon, 'BarChart');
+export const Eye = make(ViewIcon, 'Eye');
