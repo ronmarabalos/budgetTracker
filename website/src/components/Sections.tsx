@@ -169,7 +169,7 @@ export function Privacy() {
 
 export function HowItWorks() {
   const steps = [
-    { icon: CloudOff, title: 'Install Spendify', body: 'Get it from the App Store or Google Play — after that, you can go offline for good.' },
+    { icon: CloudOff, title: 'Install Spendify', body: 'Download the Android app (Google Play and the App Store are on the way). After that, you can go offline for good.' },
     { icon: User, title: 'Sign in your way', body: 'Continue with Google to sync across your phones, or create a local account — no email or internet needed.' },
     { icon: Fingerprint, title: 'Lock it & start', body: 'Add a 6-digit PIN and Face ID or fingerprint, or skip it, then record your first expense.' },
   ];
@@ -203,13 +203,14 @@ const FAQS = [
   { q: 'Do I need an internet connection?', a: 'No. Recording transactions, budgets, goals, reports, export and backup all work offline, and so do Ollie’s alerts and week types. You need a connection to sign in with Google, to sync, for category suggestions and to chat with Ollie; forecasts fall back to an estimate on your phone. Changes you make offline upload automatically later.' },
   { q: 'Is my data uploaded anywhere?', a: 'Your records are uploaded only if you sign in with Google and keep Cloud Sync on. Then a copy is kept in your private Spendify cloud account so you can use it on other phones — only your account can access it. Smart features send only what they need: the description you type (category suggestions), daily totals per category (forecasts) or your question (chat with Ollie). Never your identity, and nothing is stored. You can turn suggestions and forecasts off in Account.' },
   { q: 'Does Ollie use ChatGPT or read my transactions?', a: 'No. Ollie runs on small models built for Spendify. When you ask a question, our server only works out what you are asking and for which dates; your phone then adds up the answer from your own records, so your transactions never leave it.' },
-  { q: 'Do I need a Google account?', a: 'No. Local accounts work fully offline. Signing in with Google adds automatic backup and sync across your phones, and you can turn sync off any time.' },
+  { q: 'Do I need a Google account?', a: 'No. Local accounts work fully offline. Signing in with Google adds automatic backup and sync across your phones, and you can turn sync off any time. Started with a local account? Connect Google later in Account to start syncing.' },
   { q: 'What if I use it on two phones while offline?', a: 'Both keep working. When they reconnect, their changes merge automatically; if the same item was edited on both, the most recent edit wins.' },
   { q: 'Does it connect to my bank or e-wallet?', a: 'No — and it never asks for your banking passwords. You record transactions yourself and keep separate balances for cash, e-wallets like GCash and Maya, and bank accounts.' },
   { q: 'What happens if I lose or change my phone?', a: 'With Cloud Sync, just sign in with the same Google account on your new phone and your data comes back. Without it, create a backup from Account → Data & Backup and restore it on the new phone.' },
   { q: 'Do I have to set a PIN?', a: 'No, the MPIN is optional. Skip it and Spendify opens straight to your money, with no lock. You can add or turn off an MPIN anytime in Account → Security. Face ID and fingerprint unlock need an MPIN.' },
   { q: 'I forgot my PIN. Can I get back in?', a: 'Yes. Local accounts confirm with their password; Google accounts sign in again with the same Google account. Then you choose a new PIN.' },
-  { q: 'Which phones are supported?', a: 'Spendify is available for iPhone and Android phones.' },
+  { q: 'Which phones are supported?', a: 'Android phones, as a direct download today. Google Play and iPhone releases are on the way.' },
+  { q: 'Which currencies are supported?', a: 'Spendify tracks money in Philippine pesos (₱).' },
 ];
 
 export function Faq() {

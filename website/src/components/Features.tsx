@@ -16,6 +16,9 @@ import {
   ShieldCheck,
   Smartphone,
   Tag,
+  ThemeDark,
+  ThemeLight,
+  ThemeSystem,
   TrendUp,
   Wallet,
   WifiOff,
@@ -296,6 +299,26 @@ function FileChip({ icon, name, meta }: { icon: ReactNode; name: string; meta: s
   );
 }
 
+function EverydayGlimpse() {
+  return (
+    <div className="w-full max-w-60 space-y-2.5">
+      <div className="glass-raised rounded-2xl px-4 py-2.5 text-sm text-on-surface-variant">Search transactions…</div>
+      <div className="hero-gradient flex items-center justify-between rounded-2xl px-4 py-3 text-white">
+        <span className="text-xs font-semibold opacity-80">Total balance</span>
+        <span className="text-lg font-bold tracking-widest">₱ ••••••</span>
+      </div>
+      <div className="flex justify-center gap-2">
+        <span className="glass-raised inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium">
+          <ThemeLight className="h-3.5 w-3.5" /> Light
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/12 px-3 py-1.5 text-xs font-semibold text-primary">
+          <ThemeDark className="h-3.5 w-3.5" /> Dark
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // ── Ollie glimpses (sample data; wording matches the app's own messages) ───
 
 function OllieBubble({ children, brand }: { children: ReactNode; brand?: boolean }) {
@@ -416,7 +439,7 @@ export function SmartFeatures() {
         </div>
         <p className="mt-6 text-center text-sm text-on-surface-variant">
           Suggestions, forecasts, alerts and week types can each be switched off in Account; chat is only used when you
-          ask. Shown with sample data.
+          ask. Choose a male or female Ollie for your Home screen. Shown with sample data.
         </p>
       </div>
     </section>
@@ -471,14 +494,14 @@ export function Features() {
           <Tile
             icon={PiggyBank}
             title="Savings goals"
-            body="Track an emergency fund, a trip or a new laptop, and see at a glance if you’re on track."
+            body="Track an emergency fund, a trip or a new laptop, and see at a glance if you’re on track. Plan a monthly deposit and get a reminder on the day."
             visual={<GoalGlimpse />}
           />
           <Tile
             className="md:col-span-2"
             icon={PieChart}
             title="Reports & charts"
-            body="Spending by category, income vs. spending over six months and month-by-month totals — all computed on your device."
+            body="Spending by category, income vs. spending over six months, month-by-month totals and an estimate of next month’s spending."
             visual={<ReportsGlimpse />}
           />
           <Tile
@@ -494,11 +517,16 @@ export function Features() {
             visual={<CategoriesGlimpse />}
           />
           <Tile
-            className="md:col-span-2"
             icon={DatabaseBackup}
-            title="Backup & export"
-            body="Export to CSV for spreadsheets, or create a full backup file to move to a new phone. You choose where it goes."
+            title="Backup, export & import"
+            body="Export to CSV for spreadsheets, import transactions from a CSV, or create a full backup file to move to a new phone."
             visual={<BackupGlimpse />}
+          />
+          <Tile
+            icon={ThemeSystem}
+            title="Made for everyday use"
+            body="Search and filter your history, hide your balances with one tap, and pick a light, dark or system theme."
+            visual={<EverydayGlimpse />}
           />
         </div>
       </div>
