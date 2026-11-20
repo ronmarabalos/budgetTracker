@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { applyTransactionToBalance, transactionsToCsv } from './lib/finance';
 import { ScreenTab, Transaction, Goal, LinkedAccount, UserProfile } from './types';
 import {
   INITIAL_USER,
@@ -119,8 +120,8 @@ export default function App() {
     setAccounts((prev) =>
       prev.map((acc) => {
         if (acc.name === newTx.paymentMethod) {
-          const delta = newTx.type === 'expense' ? -newTx.amount : newTx.amount;
-          return { ...acc, balance: Math.max(0, acc.balance + delta) };
+          const balance = applyTransactionToBalance(acc.balance, newTx.amount, newTx.type);
+          return { ...acc, balance };
         }
         return acc;
       })
@@ -183,16 +184,8 @@ export default function App() {
   };
 
   const handleExportData = () => {
-    // Generate real CSV of transactions
-    const headers = 'ID,Name,Category,Type,Amount (PHP),Date,PaymentMethod,Note\n';
-    const rows = transactions
-      .map(
-        (t) =>
-          `"${t.id}","${t.name}","${t.category}","${t.type}",${t.amount},"${t.date}","${t.paymentMethod}","${t.note || ''}"`
-      )
-      .join('\n');
-
-    const blob = new Blob([headers + rows], { type: 'text/csv;charset=utf-8;' });
+    const csv = transactionsToCsv(transactions);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
